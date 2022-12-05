@@ -1,0 +1,55 @@
+<div class="row" *ngIf="proDetail != null">
+    <div class="col-9">
+        <div class="col-img">
+            <img width="900px" src="{{proDetail.image}}" alt="" class="thub">
+            <div class="show-text">
+                <a href="javascipt:;" class="hashtag">
+                    <i-bs name="tag" class="text-primary" width="2rem" height="2rem">
+                    </i-bs>
+                </a>
+                <p class="cate"><a href="javascript:;"
+                        routerLink="/product/category/{{proDetail.categoryId}}">{{proDetail.category.name}}</a> | <a
+                        href="javascript:;" (click)="viewImg(proDetail.id)"
+                        routerLink="/product/detail/{{proDetail.id}}">{{proDetail.name |
+                        titlecase}}</a></p>
+                <p *ngIf="heartFill == false">
+                    <a href="javascipt:;" class="heart" (click)="iconHeart($event)">
+                        <i-bs name="heart" class="text-primary" width="2rem" height="2rem">
+                        </i-bs>
+                    </a>
+                </p>
+                <p *ngIf="heartFill == true">
+                    <a href="javascipt:;" class="heart" (click)="iconHeart($event)">
+                        <i-bs name="heart-fill" class="text-primary" width="2rem" height="2rem">
+                        </i-bs>
+                    </a>
+                </p>
+                <a [href]="proDetail.image" class="download" (click)="downloadImg(proDetail.id)">
+                    <i-bs name="arrow-down-square" class="text-primary" width="2rem" height="2rem">
+                    </i-bs>
+                </a>
+                <p class="author">{{proDetail.author.name}}</p>
+                <p class="img-author">
+                    <i-bs name="person-circle" class="text-primary" width="2rem" height="2rem">
+                    </i-bs>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <p class="relate">Relate Images</p>
+        <div class="row">
+            <div class="col-2" *ngFor="let relate of proRelate">
+                <a href="javascript:;" (click)="viewImg(relate.id)" routerLink="/product/detail/{{relate.id}}"><img
+                        width="200px" [src]="relate.image" alt=""></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--  -->
+<!--  -->
+<!-- <a href="javascipt:;" class="heart" (click)="iconHeart()" *ngIf="heartFill == true">
+    <i-bs name="heart-fill" class="text-primary" width="2rem" height="2rem">
+    </i-bs>
+</a> -->

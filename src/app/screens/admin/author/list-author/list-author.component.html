@@ -1,0 +1,36 @@
+<p>list-author works!</p>
+<table class="table table-striped">
+    <thead>
+        <th>#</th>
+        <th>Tên tác giả</th>
+        <th>Số lượng sản phẩm</th>
+        <th>Xem số lượng</th>
+        <th>Tác vụ</th>
+        <th>
+            <a href="javascript:;" class="btn btn-success" routerLink="/admin/author/add">Create</a>
+        </th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let auth of authors;index as i">
+            <td>{{i+1}}</td>
+            <td>{{auth.name | titlecase}}</td>
+            <td>{{auth.products.length}}</td>
+            <td>
+                <a href="javascript:;" routerLink="/admin/author/detail/{{auth.id}}">
+                    <i-bs name="eye-fill" class="text-primary" width="2rem" height="2rem">
+                    </i-bs>
+                </a>
+            </td>
+            <td>
+                <a href="javascript:;" routerLink="/admin/author/edit/{{auth.id}}">
+                    <i-bs name="pencil-square" class="text-primary" width="2rem" height="2rem">
+                    </i-bs>
+                </a>&nbsp;&nbsp;
+                <a href="javascript:;" (click)="removeAuthor(auth.id)">
+                    <i-bs name="trash-fill" class="text-primary" width="2rem" height="2rem">
+                    </i-bs>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>

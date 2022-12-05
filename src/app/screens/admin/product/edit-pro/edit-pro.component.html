@@ -1,0 +1,70 @@
+<!-- <p>edit-pro works!</p>
+{{productForm.value | json}}
+<br> -->
+<form [formGroup]="productForm" (submit)="savePro($event)">
+    <div class="form-group col-md-6">
+        <label for="">Name</label>
+        <input type="text" class="form-control" formControlName="name">
+        <div class="alert alert-danger pt-1" *ngIf="f.name.invalid && (f.name.dirty || f.name.touched)">
+            <!-- touched : đã chạm vào
+            dirty : thay đổi giá trị -->
+            <p class="text-danger" *ngIf="f.name.errors?.required">
+                Hãy nhập tên danh mục
+            </p>
+            <p class="text-danger" *ngIf="f.name.errors?.minlength">
+                Tên danh mục ít nhất 3 ký tự
+            </p>
+            <p class="text-danger" *ngIf="f.name.errors?.maxlength">
+                Tên danh mục nhiều nhất 60 ký tự
+            </p>
+        </div>
+    </div>
+    <div class="form-group col-md-6">
+        <label for="">Category</label>
+        <select class="custom-select" formControlName="categoryId">
+            <option *ngFor="let cate of Cate" [value]="cate.id">{{cate.name}}</option>
+        </select>
+        <div class="alert alert-danger pt-1" *ngIf="f.categoryId.invalid && (f.categoryId.dirty || f.categoryId.touched)">
+            <!-- touched : đã chạm vào
+            dirty : thay đổi giá trị -->
+            <p class="text-danger" *ngIf="f.categoryId.errors?.required">
+                Hãy chọn thể loại danh mục
+            </p>
+        </div>
+    </div>
+    <div class="form-group col-md-6">
+        <label for="">Author</label>
+        <select class="custom-select" formControlName="authorId">
+            <option *ngFor="let diff of Diff" [value]="diff.id">{{diff.name}}</option>
+        </select>
+        <div class="alert alert-danger pt-1" *ngIf="f.authorId.invalid && (f.authorId.dirty || f.authorId.touched)">
+            <!-- touched : đã chạm vào
+            dirty : thay đổi giá trị -->
+            <p class="text-danger" *ngIf="f.authorId.errors?.required">
+                Hãy chọn thể loại danh mục
+            </p>
+        </div>
+    </div>
+    <div class="form-group col-md-6">
+        <label for="">Source</label>
+        <input type="text" class="form-control" formControlName="source">
+    </div>
+    <div class="form-group col-md-6">
+        <label for="">View</label>
+        <input type="text" class="form-control" formControlName="view" disabled>
+    </div>
+    <div class="form-group col-md-6">
+        <label for="">Download</label>
+        <input type="text" class="form-control" formControlName="download" disabled>
+    </div>
+    <div class="form-group col-md-6" *ngIf="productForm.value.image.length > 0">
+        <img width="300" [src]="productForm.value.image" alt="" class="img-thumbnail">
+    </div>
+    <div class="form-group col-md-6">
+        <label for="">Image</label>
+        <input type="file" (change)="upload($event)" class="form-control" accept="image/*">
+    </div>
+    <div>
+        <button type="submit" [disabled]="productForm.invalid" class=" btn btn-primary">Lưu</button>
+    </div>
+</form>

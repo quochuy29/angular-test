@@ -1,0 +1,51 @@
+<br>
+<div class="row">
+    <div class="col-3">
+        <input type="text" class="form-control" (keyup)="search()" [(ngModel)]="filterObject.keyword"
+            placeholder="Tìm kiếm">
+    </div>
+    <div class="col-3">
+        <select class="form-control" (change)="search()" [(ngModel)]="filterObject.orderBy" (keyup)="search()">
+            <option *ngFor="let ord of orderCondition" [value]="ord.id">{{ord.name}}</option>
+        </select>
+    </div>
+    <div class="col-2">
+        <select class="form-control" (change)="search()" [(ngModel)]="filterObject.authorBy" (keyup)="search()">
+            <option *ngFor="let author of authorCondition" [value]="author.id">{{author.name}}</option>
+        </select>
+    </div>
+    <div class="col-2">
+        <select class="form-control" (change)="search()" [(ngModel)]="filterObject.accorBy" (keyup)="search()">
+            <option *ngFor="let accor of accorCondition" [value]="accor.id">{{accor.name}}</option>
+        </select>
+    </div>
+</div>
+<br>
+<table class="table table-striped">
+    <thead>
+        <th>#</th>
+        <th>Tên danh mục</th>
+        <th>Hình ảnh</th>
+        <th>Thể loại</th>
+        <th>
+            <a href="javascript:;" class="btn btn-success" routerLink="/admin/product/add">
+                Create
+            </a>
+        </th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let pro of product;index as i">
+            <td>{{i+1}}</td>
+            <td>{{pro.name | titlecase}}</td>
+            <td>
+                <img width="200" [src]="pro.image" alt="img-thumbail">
+            </td>
+            <td>{{pro.category.name}}</td>
+            <!-- <td>{{cate.characters.length}}</td> -->
+            <td>
+                <a href="javascript:;" class="btn btn-info" routerLink="/admin/product/detail/{{pro.id}}">Chi
+                    tiết</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

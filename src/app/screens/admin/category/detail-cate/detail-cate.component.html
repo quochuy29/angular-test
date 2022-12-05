@@ -1,0 +1,11 @@
+<h2>Các tác phẩm thuộc thể loại</h2>
+<div class="row">
+    <div class="col-sm" style="margin-bottom: 30px;margin-right: 20px;" *ngFor="let pro of product">
+        <img width="200" [src]="pro.image" alt="">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{pro.name}}</li>
+            <li class="list-group-item">Số lượt xem : {{pro.view}}</li>
+            <li class="list-group-item">Số lượt tải : {{pro.download}}</li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<h2>Thông tin về hình ảnh</h2>
+<div class="row" *ngIf="product != null">
+    <div class="col-sm-5" *ngIf="imgShow == true">
+        <img width="600px" [src]="product.image" alt="">
+    </div>
+    <div class="col-sm-5">
+        <ul class="list-group">
+            <li class="list-group-item">Tên hình ảnh : {{product.name}}</li>
+            <li class="list-group-item">Thể loại : {{product.category.name}}</li>
+            <li class="list-group-item">Tác giả : {{product.author.name}}</li>
+            <li class="list-group-item">Nguồn : {{product.source}}</li>
+            <li class="list-group-item">Lượt xem : {{product.view}}</li>
+            <li class="list-group-item">Lượt download : {{product.download}}</li>
+            <li class="list-group-item"><a href="javascipt:;" (click)=imageShow($event)>
+                    <i-bs name="eye-fill" class="text-primary" width="2rem" height="2rem">
+                    </i-bs>
+                </a></li>
+            <li class="list-group-item">
+                <a href="javascript:;" routerLink="/admin/product/edit/{{product.id}}">
+                    <i-bs name="pencil-square" class="text-primary" width="2rem" height="2rem">
+                    </i-bs>
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="javascript:;" (click)="removeImg(product.id,product.image)">
+                    <i-bs name="trash-fill" class="text-primary" width="2rem" height="2rem">
+                    </i-bs>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

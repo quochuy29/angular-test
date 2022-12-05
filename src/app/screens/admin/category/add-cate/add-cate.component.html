@@ -1,0 +1,28 @@
+<p>add-cate works!</p>
+<div class="row">
+    {{cateForm.value | json}}
+    <div class="col-6 offset-3">
+        <form action="" (submit)="saveCate($event)" [formGroup]="cateForm">
+            <div class="form-group">
+                <label for=""></label>
+                <input type="text" class="form-control" formControlName="name">
+            </div>
+            <div class="alert alert-danger" *ngIf="f.name.invalid && (f.name.dirty || f.name.touched)">
+                <!-- touched : đã chạm vào
+                dirty : thay đổi giá trị -->
+                <p class="text-danger" *ngIf="f.name.errors?.required">
+                    Hãy nhập tên danh mục
+                </p>
+                <p class="text-danger" *ngIf="f.name.errors?.minlength">
+                    Tên danh mục ít nhất 5 ký tự
+                </p>
+                <p class="text-danger" *ngIf="f.name.errors?.maxlength">
+                    Tên danh mục nhiều nhất 20 ký tự
+                </p>
+            </div>
+            <div class="text-center">
+                <button type="submit" [disabled]="cateForm.invalid" class="btn btn-primary">Lưu</button>
+            </div>
+        </form>
+    </div>
+</div>

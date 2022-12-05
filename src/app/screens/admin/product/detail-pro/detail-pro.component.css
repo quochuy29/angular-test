@@ -1,0 +1,8 @@
+.list-group-item{
+    background-color:rgba(0,0,0,0.0);
+    font-weight: bold;
+    color: #007bff;
+}
+.row{
+    grid-gap: 50px;
+}

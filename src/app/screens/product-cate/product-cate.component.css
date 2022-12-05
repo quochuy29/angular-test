@@ -1,0 +1,66 @@
+.show-text{
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.52);
+    height: 236px;
+    width: 420px;
+    position: absolute;
+    bottom:86px;
+    opacity: 0;
+}
+
+.col-4 div.show-text{
+    overflow: hidden;
+}
+
+.col-4:hover div.show-text{
+    opacity: 1;
+    transform: translateY(50px);
+    transition:ease-in-out 0.5s;
+}
+.col-4{
+    margin-bottom: 50px;
+}
+.hashtag i-bs{
+    margin-right: 350px;
+    position: relative;
+    top: 10px;
+}
+
+.download i-bs{
+    position: relative;
+    top: 120px;
+    left: 190px;
+}
+.heart i-bs{
+    position: relative;
+    top: 120px;
+    left: 190px;
+}
+.tag{
+    display: grid;
+    grid-template-columns: 30px 400px;
+}
+.name-tag{
+    text-align: left;
+    position: relative;
+    top: 15px;
+    left: 5px;
+}
+.author-list{
+    display: grid;
+    grid-template-columns: 30px 1fr;
+}
+.author-avatar{
+    margin-left: 2px;
+    margin-top: 90px;
+}
+.author-name{
+    color: #ffffff;
+    position: relative;
+    top: 90px;
+    right: 120px;
+}
+h1{
+    text-align: center;
+    font-weight: bold;
+}

@@ -1,0 +1,70 @@
+<br>
+<div class="row">
+    <div class="col-3 offset-6">
+        <input type="text" class="form-control" (keyup)="search()" [(ngModel)]="filterObject.keyword"
+            placeholder="Tìm kiếm">
+    </div>
+    <div class="col-3">
+        <select class="form-control" (change)="search()" [(ngModel)]="filterObject.orderBy" (keyup)="search()">
+            <option *ngFor="let ord of orderCondition" [value]="ord.id">{{ord.name}}</option>
+        </select>
+    </div>
+</div>
+<br>
+<h1 *ngIf="cateName != null">{{cateName.name}}</h1><br>
+<div class="row">
+    <div class="col-4" *ngFor="let pro of productType">
+        <div class="img-show">
+            <img width="420px" src="{{pro.image}}" alt="">
+        </div>
+        <div class="show-text">
+            <div class="tag">
+                <div class="tags">
+                    <a href="javascipt:;" class="hashtag">
+                        <i-bs name="tag" class="text-primary" width="2rem" height="2rem">
+                        </i-bs>
+                    </a>
+                </div>
+                <div class="name-tag">
+                    <p class="cate"><a href="javascript:;"
+                            routerLink="/product/category/{{pro.categoryId}}">{{pro.category.name}}</a> | <a
+                            href="javascript:;" (click)="viewImg(pro.id)"
+                            routerLink="/product/detail/{{pro.id}}">{{pro.name |
+                            titlecase}}</a></p>
+                </div>
+            </div>
+            <p *ngIf="heartFill == false">
+                <a href="javascipt:;" class="heart" (click)="iconHeart($event)">
+                    <i-bs name="heart" class="text-primary" width="1.5rem" height="1.5rem">
+                    </i-bs>
+                </a>
+            </p>
+            <p *ngIf="heartFill == true">
+                <a href="javascipt:;" class="heart" (click)="iconHeart($event)">
+                    <i-bs name="heart-fill" class="text-primary" width="1.5rem" height="1.5rem">
+                    </i-bs>
+                </a>
+            </p>
+            <a [href]="pro.image" class="download" (click)="downloadImg(pro.id)">
+                <i-bs name="arrow-down-square" class="text-primary" width="1.5rem" height="1.5rem">
+                </i-bs>
+            </a>
+            <div class="author-list">
+                <div class="author-avatar">
+                    <p class="img-author">
+                        <i-bs name="person-circle" class="text-primary" width="2rem" height="2rem">
+                        </i-bs>
+                    </p>
+                </div>
+                <div class="author-name">
+                    <p class="author">{{pro.author}}</p>
+                </div>
+            </div>
+        </div>
+        <h4 style="text-align: center;">
+            <a href="javascipt:;" (click)="viewImg(pro.id)" routerLink="/product/detail/{{pro.id}}"
+                style="color: black;">{{pro.name |
+                titlecase}}</a>
+        </h4>
+    </div>
+</div>

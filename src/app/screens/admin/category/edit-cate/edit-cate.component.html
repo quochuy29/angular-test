@@ -1,0 +1,25 @@
+<p>edit-cate works!</p>
+<div class="row">
+    <div class="col-6 offset-3">
+        <form action="" (submit)="saveCate($event)" [formGroup]="editForm">
+            <div class="form-group">
+                <label for="">Tên danh mục</label>
+                <input type="text" formControlName="name" class="form-control">
+            </div>
+            <div class="alert alert-danger" *ngIf="f.name.invalid && (f.name.dirty || f.name.touched)">
+                <span class="text-danger" *ngIf="f.name.errors?.required">
+                    Hãy nhập tên danh mục
+                </span>
+                <span class="text-danger" *ngIf="f.name.errors?.minlength">
+                    Tên danh mục cần có ít nhất 4 ký tự
+                </span>
+                <span class="text-danger" *ngIf="f.name.errors?.maxlength">
+                    Tên danh mục không nhiều hơn 20 ký tự
+                </span>
+            </div>
+            <div class="text-center">
+                <button type="submit" [disabled]="editForm.invalid" class="btn btn-primary">Lưu</button>
+            </div>
+        </form>
+    </div>
+</div>

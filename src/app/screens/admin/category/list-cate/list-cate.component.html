@@ -1,0 +1,35 @@
+<table class="table table-striped">
+    <thead>
+        <th>#</th>
+        <th>Tên danh mục</th>
+        <th>Số lượng sản phẩm</th>
+        <th>Xem số lượng</th>
+        <th>Tác vụ</th>
+        <th>
+            <a href="javascript:;" class="btn btn-success" routerLink="/admin/category/add">Create</a>
+        </th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cate of cates;index as i">
+            <td>{{i+1}}</td>
+            <td>{{cate.name | titlecase}}</td>
+            <td>{{cate.products.length}}</td>
+            <td>
+                <a href="javascript:;" routerLink="/admin/category/detail/{{cate.id}}">
+                    <i-bs name="eye-fill" class="text-primary" width="2rem" height="2rem">
+                    </i-bs>
+                </a>
+            </td>
+            <td>
+                <a href="javascript:;" routerLink="/admin/category/edit/{{cate.id}}">
+                    <i-bs name="pencil-square" class="text-primary" width="2rem" height="2rem">
+                    </i-bs>
+                </a>&nbsp;&nbsp;
+                <a href="javascript:;" (click)="removeCate(cate.id)">
+                    <i-bs name="trash-fill" class="text-primary" width="2rem" height="2rem">
+                    </i-bs>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
